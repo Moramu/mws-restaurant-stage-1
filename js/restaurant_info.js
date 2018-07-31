@@ -89,6 +89,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  let desc = restaurant.name + " restaurant. " + " Cuisine type:" + restaurant.cuisine_type;
+  image.alt = desc; 
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -149,18 +151,23 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
+  name.className = "reviewer";
   name.innerHTML = review.name;
   li.appendChild(name);
 
   const date = document.createElement('p');
+  date.className = "date";
   date.innerHTML = review.date;
   li.appendChild(date);
 
   const rating = document.createElement('p');
-  rating.innerHTML = `Rating: ${review.rating}`;
+  rating.className = "rating";
+  rating.innerHTML = getStars(review.rating);
   li.appendChild(rating);
+  
 
   const comments = document.createElement('p');
+  comments.className = "comment";
   comments.innerHTML = review.comments;
   li.appendChild(comments);
 
@@ -191,4 +198,25 @@ getParameterByName = (name, url) => {
   if (!results[2])
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+function getStars(rating) {
+
+  // Round to nearest half
+  rating = Math.round(rating * 2) / 2;
+  let output = [];
+
+  // Append all the filled whole stars
+  for (var i = rating; i >= 1; i--)
+    output.push('<i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+  // If there is a half a star, append it
+  if (i == .5) output.push('<i class="fa fa-star-half-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+  // Fill the empty stars
+  for (let i = (5 - rating); i >= 1; i--)
+    output.push('<i class="fa fa-star-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
+
+  return output.join('');
+
 }
