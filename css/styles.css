@@ -41,7 +41,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 #footer {
   background-color: #444;
-  color: #aaa;
+  color: #fffbfb;
   font-size: 8pt;
   letter-spacing: 1px;
   padding: 25px;
@@ -86,7 +86,7 @@ nav h1 a {
 
 /* Add a color to all links inside the list */
 #breadcrumb li a {
-    color: #0275d8;
+    color: #0000FF;
     text-decoration: none;
 }
 
@@ -271,7 +271,7 @@ nav h1 a {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
   padding: 100px 40px 30px;
-  width: 40%;
+  width: 43%;
 }
 #reviews-container {
   padding: 30px 40px 80px;
@@ -296,7 +296,7 @@ nav h1 a {
   overflow: hidden;
   padding: 0 5px 20px;
   position: relative;
-  width: 90%;
+  width: 100%;
   border-radius: 22px;
   text-align: justify;
 }
@@ -334,6 +334,12 @@ nav h1 a {
 }
 #restaurant-hours td {
   color: #666;
+}
+
+.leaflet-bottom,
+.leaflet-right,
+.leaflet-container a {
+  color: #0000FF;
 }
 
 @media (max-width: 600px) { 
@@ -393,5 +399,9 @@ nav h1 a {
 
   td,th {
     font-size: 12pt;
+  }
+
+  #reviews-list li {
+    width: 90%;
   }
 }
