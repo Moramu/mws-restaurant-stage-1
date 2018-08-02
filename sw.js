@@ -1,4 +1,4 @@
-const cacheName = 'restaurant-app';
+const cacheName = 'restaurant-app-cache1';
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
@@ -10,6 +10,7 @@ self.addEventListener('install', function(event) {
           '/js/main.js',
           '/js/restaurant_info.js',
           '/js/register_sw.js',
+          '/img/offline-logo.png',
           'restaurant.html',
           'index.html',
           'sw.js'
@@ -19,15 +20,17 @@ self.addEventListener('install', function(event) {
   );
 });
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then(function(resp) {
-      return resp || fetch(event.request).then(function(response) {
-        return caches.open(cacheName).then(function(cache) {
-          cache.put(event.request, response.clone());
-          return response;
-        });  
+    caches.match(event.request).then(resp => {
+      return resp || fetch(event.request).then( response => {
+        let responseClone = response.clone();
+        caches.open('cacheName').then(cache => {
+          cache.put(event.request, responseClone);
+        });
+        return response;
       });
     })
-  );
+  )
 });
+
