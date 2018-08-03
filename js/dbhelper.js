@@ -147,16 +147,29 @@ class DBHelper {
   }
 
   /**
-   * Restaurant image URL.
+   * Image URL.
    */
   static imageUrlForRestaurant(restaurant) {
     return (`/img/${restaurant.photograph}`);
   }
 
+  static imageSrcsetForRestaurant(restaurant) {
+    return (`/img/${restaurant.id}_w_190.jpg 190w,
+           /img/${restaurant.id}_w_386.jpg 386w,
+           /img/${restaurant.id}_w_532.jpg 532w,
+           /img/${restaurant.id}_w_669.jpg 669w,
+           /img/${restaurant.id}_w_800.jpg 800w`);
+  }
+
+  static imageSrcsetForIndex(restaurant) {
+    return (`/img/${restaurant.id}_w_190.jpg 1x,
+            /img/${restaurant.id}_w_386.jpg 2x`);
+  }
+
   /**
    * Map marker for a restaurant.
    */
-   static mapMarkerForRestaurant(restaurant, map) {
+  static mapMarkerForRestaurant(restaurant, map) {
     // https://leafletjs.com/reference-1.3.0.html#marker  
     const marker = new L.marker([restaurant.latlng.lat, restaurant.latlng.lng],
       {title: restaurant.name,
@@ -176,6 +189,8 @@ class DBHelper {
     );
     return marker;
   } */
+
+
 
 }
 

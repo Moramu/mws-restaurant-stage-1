@@ -325,15 +325,17 @@ nav h1 a {
   font-size: 12px;
 }
 
-.comment {
-
+td:first-child {
+  font-weight: bold;
 }
 
-.rating{
-
+td:nth-child(2){
+  text-decoration: underline;
 }
+
 #restaurant-hours td {
   color: #666;
+
 }
 
 .leaflet-bottom,
@@ -341,6 +343,13 @@ nav h1 a {
 .leaflet-container a {
   color: #0000FF;
 }
+
+@media (max-width: 400px) { 
+#reviews-list li {
+    width: 90%;
+  }
+}
+
 
 @media (max-width: 600px) { 
   .inside #map-container {
@@ -392,7 +401,7 @@ nav h1 a {
 
 }
 
-@media (min-width: 375px) and (max-width: 800px){ 
+@media (min-width: 375px) and (max-width: 750px){ 
   #reviews-list li p {
     font-size: 12pt;
   }
