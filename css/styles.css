@@ -350,7 +350,7 @@ td:nth-child(2){
   }
 }
 
-
+/* ====================== Mobile View ====================== */
 @media (max-width: 600px) { 
   .inside #map-container {
     background: blue none repeat scroll 0 0;
